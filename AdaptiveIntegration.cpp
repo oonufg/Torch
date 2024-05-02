@@ -30,8 +30,8 @@ double calculateIntegralAdaptive(double leftLim, double rightLim, double eps){
         return 0;
     }
 
-    double teta = std::abs(simpsonsFormula(leftLim, middle) + simpsonsFormula(middle, rightLim) - simpsonsFormula(leftLim, rightLim)) / 15;
-    if(teta > EPS){
+    double integrationError = std::abs(simpsonsFormula(leftLim, middle) + simpsonsFormula(middle, rightLim) - simpsonsFormula(leftLim, rightLim)) / 15;
+    if(integrationError > EPS){
         result += calculateIntegralAdaptive(leftLim, middle, eps / 2) + calculateIntegralAdaptive(middle, rightLim, eps / 2);
     } else {
         return simpsonsFormula(leftLim, rightLim);
